@@ -1,0 +1,20 @@
+
+%button.btn-info.btn-block{id: "#{game.html_id.to_s}-1", onclick: "#{build_onclick(1, game.html_id, game.html_id_next)}"}
+  .row.team
+    - prev_game = Game.where(html_id_next: game.html_id, next_round_placement_for_pick: "top").first
+    - if prev_game.winner_id.to_i > 0
+      .col-lg-2 (#{Team.find_by(id: prev_game.winner_id).seed})
+      .col-lg-9 #{Team.find_by(id: prev_game.winner_id).name}
+    - else
+      .col-lg-2 .
+      .col-lg-9 .
+
+%button.btn-primary.btn-block{id: "#{game.html_id.to_s}-2", onclick: "#{build_onclick(2, game.html_id, game.html_id_next)}"}
+  .row.team
+    - prev_game = Game.where(html_id_next: game.html_id, next_round_placement_for_pick: "bottom").first
+    - if prev_game.winner_id.to_i > 0
+      .col-lg-2 (#{Team.find_by(id: prev_game.winner_id).seed})
+      .col-lg-9 #{Team.find_by(id: prev_game.winner_id).name}
+    - else
+      .col-lg-2 .
+      .col-lg-9 .

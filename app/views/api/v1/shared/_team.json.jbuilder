@@ -1,0 +1,1 @@
+json.merge! team.attributes.reject{ |key, value| /ed_at$/ =~ key }

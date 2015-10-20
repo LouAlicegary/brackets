@@ -1,0 +1,1 @@
+json.merge! game.attributes.reject{|k,v| /ed_at$/ =~ k}

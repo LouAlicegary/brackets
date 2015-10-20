@@ -1,0 +1,53 @@
+.container
+  
+  .row
+    .col-lg-2.col-gutter
+      %h3 Round of 16
+    .col-lg-2.col-gutter
+      %h3 Elite 8
+    .col-lg-2.col-gutter
+      %h3 Final 4
+    .col-lg-2.col-gutter
+      %h3 Championship
+    .col-lg-3
+      %h3 CHAMPION 
+  .row
+    .col-lg-2.round1-top-spacer.col-gutter
+      - Game.all.round(3).each do |game|
+        .row.round1.game
+          = render partial: 'game', locals: {game: game} 
+    .col-lg-2.round2-top-spacer.col-gutter
+      - Game.all.round(4).each do |game|
+        .row.round2.game
+          = render partial: 'game', locals: {game: game} 
+    .col-lg-2.round3-top-spacer.col-gutter
+      - Game.all.round(5).each do |game|
+        .row.round3.game
+          = render partial: 'game', locals: {game: game} 
+    .col-lg-2.round4-top-spacer.col-gutter
+      - Game.all.round(6).each do |game|
+        .row.round4.game
+          = render partial: 'game', locals: {game: game}
+    .col-lg-3
+      %h2 Michigan State
+      .row
+        %hr
+        %table.table.table-striped
+          %thead
+            %tr
+              %td.col-lg-1 Rank
+              %td.col-lg-6 Name
+              %td.col-lg-5 Current Score   
+          %tbody 
+            - Bracket.all.each_with_index do |bracket, index|
+              - if index < 3
+                %tr.success{id: "rank-#{index}"}
+                  %td.col-lg-1{id: "rank-#{index}-rank"}  #{index+1}
+                  %td.col-lg-6{id: "rank-#{index}-name"}  #{bracket.name}
+                  %td.col-lg-5{id: "rank-#{index}-current"}  #{bracket.current_score} 
+              - else
+                %tr{id: "rank-#{index}"}
+                  %td.col-lg-1{id: "rank-#{index}-rank"}  #{index+1}
+                  %td.col-lg-6{id: "rank-#{index}-name"}  #{bracket.name}
+                  %td.col-lg-5{id: "rank-#{index}-current"}  #{bracket.current_score}
+                

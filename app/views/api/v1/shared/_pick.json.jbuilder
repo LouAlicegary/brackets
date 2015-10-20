@@ -1,0 +1,1 @@
+json.merge! pick.attributes.reject{ |k,v| /ed_at$/ =~ k }

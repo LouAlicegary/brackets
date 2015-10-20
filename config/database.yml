@@ -1,0 +1,18 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  port: 3306
+  timeout: 5000
+
+test:
+  <<: *default
+  host: localhost
+  database: brackets
+
+development:
+  <<: *default
+  host: localhost
+  database: brackets
+  username: root
+  password:
